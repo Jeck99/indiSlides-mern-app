@@ -1,22 +1,25 @@
 import "./slides.css";
 import { useEffect, useState } from "react";
 import Slide from "../../parts/slide/slide";
-import { getStudents } from "../../../services/student.service";
+import { getAllSlides } from "../../../services/slides.service";
 
 const Slides = ()=> {
   const [slides, setSlides] = useState([]);
 
   useEffect(() => {
-    getStudents().then((students) => {
-      setSlides(students);
+    getAllSlides().then((slides) => {
+      setSlides(slides);
     });
   }, []);
   return (
     <div className="slides">
       <h1>slides page</h1>
-      {slides?.map((slideItem, index) => (
-        <Slide key={index} slideSrc={slideItem.link} />
-      ))}
+      <div className="slidesCards">
+        {slides?.map((slideItem, index) => (
+        <Slide key={index} slideItem={slideItem}/>
+      ))}      
+      </div>
+
     </div>
   );
 }

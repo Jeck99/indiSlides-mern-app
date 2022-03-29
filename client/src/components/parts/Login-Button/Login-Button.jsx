@@ -14,7 +14,7 @@ function LoginButton() {
     <>
     {user?.displayName}
       <button onClick={googleLogin}>
-        <h1>Login-Button</h1>
+       Login-Button
       </button>
     </>
   );

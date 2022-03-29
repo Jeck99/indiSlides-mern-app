@@ -1,16 +1,26 @@
 import "./slide.css";
-import React from "react";
+import { useState } from "react";
 
-function Slide({ slideSrc,title }) {
+function Slide({ slideItem }) {
+  const [showSlide, setShowSlide] = useState(false);
+
   return (
-    <iframe
-      title={title}
-      src={slideSrc}
-      frameBorder="0"
-      width="960"
-      height="569"
-      allowFullScreen={true}
-    ></iframe>
+    <div className="slide">
+      <div className="slide__image" onClick={() => setShowSlide(!showSlide)}>
+        <div className="slide__title">
+          {slideItem.title}
+          </div>
+      </div>
+      {showSlide && (
+        <iframe
+          title={slideItem.title}
+          src={slideItem.link}
+          frameBorder="0"
+          width="100%"
+          allowFullScreen={true}
+        ></iframe>
+      )}
+    </div>
   );
 }
 

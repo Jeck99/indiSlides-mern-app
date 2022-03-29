@@ -7,7 +7,8 @@ import { FirebaseContext } from "../../../context/firebase-context";
 function Header() {
   const { user } = useContext(FirebaseContext);
   return (
-    <header className="App-header">
+    <header className="header">
+      <img src="logo192.png" className="header__logo"/>
       <h1>Hello {user?.displayName} </h1>
       {user ? <Logout /> : <Login />}
     </header>

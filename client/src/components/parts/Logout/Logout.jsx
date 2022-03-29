@@ -7,7 +7,7 @@ function Logout() {
   const { auth } = useContext(FirebaseContext);
   return (
     <button onClick={() => auth.signOut()}>
-      <h1>Logout</h1>
+      Logout
     </button>
   );
 }

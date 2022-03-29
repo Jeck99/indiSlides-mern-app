@@ -5,9 +5,9 @@ position: fixed;
 bottom: 0;
 width: 100%;
 background: #3f51b5;
-height: 3vh;
+height: 10%;
 :hover{
-	height: 7vh;
+	height: 10%;
 }
 `;
 

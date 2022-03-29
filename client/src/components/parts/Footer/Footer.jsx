@@ -10,7 +10,8 @@ import {
 
 export default function Footer() {
     return (
-        <Box>
+    <div className="footer">
+    <Box>
             <Container>
                 <Row>
                     <Column>
@@ -25,8 +26,17 @@ export default function Footer() {
                         <Heading>Twitter</Heading>
                         {/* <FooterLink href="#">Uttar Pradesh</FooterLink> */}
                     </Column>
+                    <Column>
+                        <Heading>Github</Heading>
+                        {/* <FooterLink href="#">Uttar Pradesh</FooterLink> */}
+                    </Column>
+                    <Column>
+                        <Heading>Linkedin</Heading>
+                        {/* <FooterLink href="#">Uttar Pradesh</FooterLink> */}
+                    </Column>
                 </Row>
             </Container>
         </Box>
+    </div>
     );
 };

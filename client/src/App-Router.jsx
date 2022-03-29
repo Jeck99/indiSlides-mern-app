@@ -1,27 +1,23 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-
-import { UserContext } from "./context/user-context.jsx";
 import Footer from "./components/parts/Footer/Footer";
+import Sidebar from "./components/parts/Sidebar/Sidebar";
 import PrivateRoute from "./components/parts/Private-Route/Private-Route";
-import Students from "./components/pages/Students/Students";
 import Slides from "./components/pages/slides/slides";
+import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
-import Register from "./components/pages/Register/Register";
 import { FirebaseContext } from "./context/firebase-context";
 
 const AppRouter = () => {
   const { user } = useContext(FirebaseContext);
   return (
     <BrowserRouter>
+    {user ? <Sidebar/> : ""}
+    
       <Routes>
         <Route exact path="/" element={user ? <Slides/> : <Login/>} />
-        <Route exact path="/students" element={user ? <Students/> : <Login/>} />
-        <Route exact path="/register" element={<Register/>} />
-        <Route
-          path="/Slides"
-          element={<PrivateRoute component={<Slides />} />}
+        <Route path="/slides" element={<PrivateRoute component={Slides} />}
         />
       </Routes>
       <Footer />
