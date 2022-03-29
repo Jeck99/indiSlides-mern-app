@@ -11,6 +11,7 @@ import { FirebaseContext } from "./context/firebase-context";
 
 const AppRouter = () => {
   const { user } = useContext(FirebaseContext);
+
   return (
     <BrowserRouter>
     {user ? <Sidebar/> : ""}

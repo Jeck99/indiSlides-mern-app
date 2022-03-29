@@ -1,21 +1,23 @@
-import { createContext,useState,useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import firebase from "firebase/compat/app";
 import firebaseConfig from "../firebase.js";
 import "firebase/compat/auth";
-import {useAuthState} from "react-firebase-hooks/auth"; // ייבוא
-firebase.initializeApp(firebaseConfig); // איתחול הקשר לפיירבייס
-const firebaseAuth = firebase.auth();// יצירת אובייקט אימות פיירבייס
-export const FirebaseContext = createContext(); // יצירת קונטקסט
-const FirebaseProvider = ({children})=>{
-    const [user] = useAuthState(firebaseAuth); // ייבוא של משתמש מפיירבייס
-    const [auth,setAuth] = useState(null);
-    useEffect(()=>{
-        setAuth(firebaseAuth);
-    },[]);
-    return(
-        <FirebaseContext.Provider value={{user,auth}}>
-            {children}
-        </FirebaseContext.Provider>
-    )
-}
+import { useAuthState } from "react-firebase-hooks/auth";
+firebase.initializeApp(firebaseConfig);
+const firebaseAuth = firebase.auth();
+export const FirebaseContext = createContext();
+const FirebaseProvider = ({ children }) => {
+  const [user] = useAuthState(firebaseAuth);
+  const [auth, setAuth] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setAuth(firebaseAuth);
+  }, []);
+  return (
+    <FirebaseContext.Provider value={{ user, auth }}>
+      {children}
+    </FirebaseContext.Provider>
+  );
+};
 export default FirebaseProvider;
