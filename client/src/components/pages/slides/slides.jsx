@@ -17,7 +17,10 @@ const Slides = () => {
     <div className="slides">
       <h1>slides page</h1>
       {loading ? (
-        <div><span>loading...</span><img src="loading-gif.jpg" alt="loading" /> </div>
+        <div>
+          <span>loading...</span>
+          <img src="loading-gif.jpg" alt="loading" />{" "}
+        </div>
       ) : (
         <div className="slidesCards">
           {slides?.map((slideItem, index) => (
