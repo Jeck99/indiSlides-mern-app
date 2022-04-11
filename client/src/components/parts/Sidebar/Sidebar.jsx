@@ -1,21 +1,12 @@
 import "./Sidebar.css";
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import MobileMenu from "../mobile-menu/mobile-menu";
+import DesktopMenu from "../desktop-menu/desktop-menu";
 const Sidebar = () => {
-  let activeStyle = {
-    textDecoration: "underline",
-    color: "#3cb451",
-    fontWeight: "bold",
-  };
-  let nonActiveStyle = {
-    textDecoration: "none",
-    color: "black",
-    fontWeight: "normal",
-    cursor: "pointer"
-  };
   const linksList = [
     { path: "/", linkTitle: "Home" },
-    { path: "/slides", linkTitle: "מצגות" },
+    { path: "/slides", linkTitle: "כל המצגות" },
     { path: "/dev101", linkTitle: "DEV 101" },
     { path: "/html", linkTitle: "HTML5" },
     { path: "/css", linkTitle: "CSS 3" },
@@ -30,24 +21,11 @@ const Sidebar = () => {
   ];
   return (
     <div className="side-bar">
-      <nav>
-        <ul>
-          {linksList.map((linkItem) => {
-            return (
-              <li key={linkItem.linkTitle}>
-                <NavLink
-                  to={linkItem.path}
-                  style={({ isActive }) =>
-                    isActive ? activeStyle : nonActiveStyle
-                  }
-                >
-                  {linkItem.linkTitle}
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      {window.screen.width < 768 ? (
+        <MobileMenu linksList={linksList} />
+      ) : (
+        <DesktopMenu linksList={linksList} />
+      )}
     </div>
   );
 };

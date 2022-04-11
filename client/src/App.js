@@ -1,17 +1,22 @@
-import React from 'react';
+import { useContext } from 'react';
 import './App.css';
-import FirebaseProvider from './context/firebase-context';
-import Header from './components/parts/Header/Header';
 import AppRouter from './App-Router';
-import Footer from './components/parts/Footer/Footer';
+import { FirebaseContext } from "./context/firebase-context";
+import { ThemeContextProvider } from "./context/style-context";
+
 const App = () => {
+  const { user } = useContext(FirebaseContext);
+  const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  isDarkTheme ?
+    document.body.classList.add("dark-theme") :
+    document.body.classList.remove("dark-theme");
+
   return (
     <div className="App">
-      <FirebaseProvider>
-        <Header />
-          <AppRouter />
-      </FirebaseProvider>
-      <Footer/>
+      <ThemeContextProvider>
+        <AppRouter user={user} />
+      </ThemeContextProvider>
     </div>
   );
 }

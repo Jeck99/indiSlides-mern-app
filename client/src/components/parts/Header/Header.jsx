@@ -1,16 +1,27 @@
 import "./Header.css";
-import { useContext } from "react";
 import Login from "../Login-Button";
 import Logout from "../Logout";
-import { FirebaseContext } from "../../../context/firebase-context";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 
-function Header() {
-  const { user } = useContext(FirebaseContext);
+function Header({ user, darkMode, setDarkMode }) {
+  const switchTheme = (e) => {
+    setDarkMode(e.target.checked);
+    document.body.classList.toggle("dark-theme");
+  };
   return (
     <header className="header">
-      <img src="logo192.png" className="header__logo"/>
-      <h1>Hello {user?.displayName} </h1>
-      {user ? <Logout /> : <Login />}
+      <div className="right-side">
+        <img src="logo192.png" className="header__logo" alt="" />
+        <div id="theme-switch">
+          <Switch color="warning" defaultChecked onChange={switchTheme} />
+          <span>{darkMode ? "Dark Theme" : "Light Theme"}</span>
+        </div>
+      </div>
+      <div className="left-side">
+        <h1 className="hello-text">{user?.displayName} </h1>
+        {user ? <Logout /> : <Login />}
+      </div>
     </header>
   );
 }

@@ -4,45 +4,24 @@ export const Box = styled.div`
 position: fixed;
 bottom: 0;
 width: 100%;
-background: #3f51b5;
-height: 10%;
-:hover{
-	height: 10%;
-}
-`;
-
-export const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	max-width: 1000px;
-	margin: 0 auto;
-	/* background: red; */
-`
-
-export const Column = styled.div`
+background: var(--dark-theme);
+height: 5vh;
 display: flex;
-flex-direction: column;
-text-align: center;
-`;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: baseline;
+@media (max-width: 600px) {
+    box-sizing: border-box;
+    justify-content: space-around;
+    align-items: center;
+}
+@media (min-width: 600px) {
 
-export const Row = styled.div`
-display: grid;
-grid-template-columns: repeat(auto-fill,
-						minmax(185px, 1fr));
-grid-gap: 20px;
-
-@media (max-width: 1000px) {
-	grid-template-columns: repeat(auto-fill,
-						minmax(200px, 1fr));
 }
 `;
 
 export const FooterLink = styled.a`
-color: #fff;
-font-size: 18px;
 text-decoration: none;
-
 &:hover {
 	color: green;
 	transition: 200ms ease-in;
@@ -51,6 +30,5 @@ text-decoration: none;
 
 export const Heading = styled.p`
 color: #fff;
-margin-bottom: 40px;
 font-weight: bold;
 `;
