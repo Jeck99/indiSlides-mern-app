@@ -8,7 +8,7 @@ const firebaseAuth = firebase.auth();
 export const FirebaseContext = createContext();
 const FirebaseProvider = ({ children }) => {
   const [user] = useAuthState(firebaseAuth);
-  const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

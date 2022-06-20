@@ -17,7 +17,8 @@ const AppRouter = ({ user }) => {
       <Header user={user} darkMode={darkMode} setDarkMode={setDarkMode} />
       {user ? <Sidebar /> : ""}
       <Routes>
-        <Route path="/slides" element={<PrivateRoute component={Slides} />} />
+        {/* <Route  exact path="/" element={<PrivateRoute component={Home} />} /> */}
+        <Route  exact path="/slides" element={<PrivateRoute component={Slides} />} />
         <Route exact path="/*" element={user ? <Home /> : <Login />} />
       </Routes>
       <Footer />
