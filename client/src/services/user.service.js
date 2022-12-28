@@ -1,5 +1,5 @@
 const BASIC_API = process.env.NODE_ENV === 'production' ?
-    'https://indi-edc-app.onrender.com/auth' : 'http://localhost:4002/auth';
+    'https://indi-edc-server.onrender.com/auth' : 'http://localhost:4002/auth';
 
 export const registerNewUser = async (user) => {
     return await fetch(`${BASIC_API}/register`, {
