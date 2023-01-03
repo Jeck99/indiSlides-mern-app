@@ -24,7 +24,7 @@ const AppRouter = ({ user }) => {
       <Routes>
         {/* <Route  exact path="/" element={<PrivateRoute component={Home} />} /> */}
         <Route  exact path="/slides" element={<PrivateRoute component={Slides} />} />
-        <Route exact path="/*" element={user ? <Home /> : <Login />} />
+        <Route exact path="/*" element={user ? <Slides /> : <Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>
